@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AppKiller88</string>
     <string name="title">AK88</string>
-    <string name="subtitle">Memory & Task Manager</string>
+    <string name="subtitle">Memory &amp; Task Manager</string>
     <string name="kill_button">KILL BACKGROUND APPS</string>
     <string name="widget_desc">Kill selected apps instantly</string>
     <string name="copyright">© MC88</string>
