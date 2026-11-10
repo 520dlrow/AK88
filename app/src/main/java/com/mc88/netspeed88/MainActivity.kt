@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.TextView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Locale
 
@@ -30,14 +31,21 @@ class MainActivity : AppCompatActivity() {
 
         tvDownload = findViewById(R.id.tvDownload)
         tvUpload = findViewById(R.id.tvUpload)
+        
+        findViewById<LinearLayout>(R.id.rootLayout).setOnClickListener {
+            lastRx = TrafficStats.getTotalRxBytes()
+            lastTx = TrafficStats.getTotalTxBytes()
+            lastTime = System.currentTimeMillis()
+            tvDownload.text = "0.0 B/s"
+            tvUpload.text = "0.0 B/s"
+        }
 
-        lastRx = TrafficStats.getTotalRxBytes()
-        lastTx = TrafficStats.getTotalTxBytes()
-        lastTime = System.currentTimeMillis()
+        resetValues()
     }
 
     override fun onResume() {
         super.onResume()
+        resetValues()
         handler.post(updateRunnable)
     }
 
@@ -46,10 +54,16 @@ class MainActivity : AppCompatActivity() {
         handler.removeCallbacks(updateRunnable)
     }
 
+    private fun resetValues() {
+        lastRx = TrafficStats.getTotalRxBytes()
+        lastTx = TrafficStats.getTotalTxBytes()
+        lastTime = System.currentTimeMillis()
+    }
+
     private fun updateNetworkSpeed() {
         val currentTime = System.currentTimeMillis()
         val timeDiff = currentTime - lastTime
-        if (timeDiff < 500) return
+        if (timeDiff <= 0) return
 
         val currentRx = TrafficStats.getTotalRxBytes()
         val currentTx = TrafficStats.getTotalTxBytes()
@@ -66,14 +80,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun formatSpeed(bytesPerSecond: Long): String {
-        if (bytesPerSecond < 0) return "0 B/s"
+        if (bytesPerSecond <= 0) return "0.0 B/s"
         val kb = bytesPerSecond / 1024.0
         val mb = kb / 1024.0
 
         return when {
             mb >= 1.0 -> String.format(Locale.US, "%.1f MB/s", mb)
             kb >= 1.0 -> String.format(Locale.US, "%.1f KB/s", kb)
-            else -> "$bytesPerSecond B/s"
+            else -> "${bytesPerSecond} B/s"
         }
     }
 }
