@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.mc88.appkiller88"
+    namespace = "com.mc88.netspeed88"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.mc88.appkiller88"
+        applicationId = "com.mc88.netspeed88"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -32,5 +32,4 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
 }
