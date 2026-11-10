@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.AppKiller88" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.NetSpeed88" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/bg_main</item>
         <item name="android:statusBarColor">@color/bg_main</item>
         <item name="android:navigationBarColor">@color/bg_main</item>
