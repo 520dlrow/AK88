@@ -3,23 +3,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/widget_bg"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="12dp"
+    android:gravity="center">
 
-    <ImageView
-        android:id="@+id/widgetIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:id="@+id/widgetText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="KILL"
-        android:textColor="#10B981"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_marginTop="4dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="↓"
+            android:textColor="@color/accent_green"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/widgetDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0 MB/s"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginStart="6dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="↑"
+            android:textColor="@color/accent_blue"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/widgetUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0 MB/s"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginStart="6dp" />
+    </LinearLayout>
 </LinearLayout>
