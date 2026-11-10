@@ -4,21 +4,22 @@
     android:layout_height="match_parent"
     android:background="@drawable/widget_bg"
     android:orientation="vertical"
-    android:padding="12dp"
+    android:padding="10dp"
     android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="↓"
             android:textColor="@color/accent_green"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -29,8 +30,14 @@
             android:textColor="@color/text_primary"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginStart="6dp" />
+            android:layout_marginStart="8dp" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#333333"
+        android:layout_marginVertical="2dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="↑"
             android:textColor="@color/accent_blue"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -55,6 +62,6 @@
             android:textColor="@color/text_primary"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginStart="6dp" />
+            android:layout_marginStart="8dp" />
     </LinearLayout>
 </LinearLayout>
