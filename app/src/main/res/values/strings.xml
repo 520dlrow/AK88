@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">AppKiller88</string>
-    <string name="title">AK88</string>
-    <string name="subtitle">Memory &amp; Task Manager</string>
-    <string name="kill_button">KILL BACKGROUND APPS</string>
-    <string name="widget_desc">Kill selected apps instantly</string>
+    <string name="app_name">NetSpeed88</string>
+    <string name="title">NETSPEED88</string>
+    <string name="subtitle">Real-time Network Monitor</string>
+    <string name="download_label">DOWNLOAD</string>
+    <string name="upload_label">UPLOAD</string>
     <string name="copyright">© MC88</string>
 </resources>
