@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108">
-  <rect width="108" height="108" rx="24" fill="#0F172A"/>
-  <path d="M54 20c-12 0-22 10-22 22v10H24c-2 0-4 2-4 4v38c0 2 2 4 4 4h60c2 0 4-2 4-4V56c0-2-2-4-4-4H76V42c0-12-10-22-22-22zm0 10c6.6 0 12 5.4 12 12v10H42V42c0-6.6 5.4-12 12-12z" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
-  <circle cx="54" cy="72" r="12" fill="none" stroke="#10B981" stroke-width="3"/>
-  <path d="M54 60v-6M54 84v6M42 72h-6M66 72h6" stroke="#10B981" stroke-width="3" stroke-linecap="round"/>
-  <text x="54" y="102" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#10B981" text-anchor="middle">AK88</text>
+  <rect width="108" height="108" rx="24" fill="#000000"/>
+  <path d="M54 24 L54 84 M24 54 L84 54" stroke="#00FFCC" stroke-width="8" stroke-linecap="round"/>
+  <path d="M40 36 L54 24 L68 36" fill="none" stroke="#00FFCC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 72 L54 84 L68 72" fill="none" stroke="#00FFCC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="54" y="102" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#00FFCC" text-anchor="middle">MC88</text>
 </svg>
