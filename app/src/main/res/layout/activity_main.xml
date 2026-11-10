@@ -5,16 +5,19 @@
     android:orientation="vertical"
     android:background="@color/bg_main"
     android:gravity="center"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/rootLayout">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textColor="@color/accent_green"
-        android:textSize="36sp"
+        android:textSize="38sp"
         android:textStyle="bold"
-        android:letterSpacing="0.1" />
+        android:letterSpacing="0.15" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,14 +25,17 @@
         android:text="@string/subtitle"
         android:textColor="@color/text_secondary"
         android:textSize="14sp"
-        android:layout_marginBottom="48dp" />
+        android:layout_marginBottom="56dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="24dp">
+        android:background="@color/surface"
+        android:padding="24dp"
+        android:elevation="8dp"
+        android:layout_marginHorizontal="16dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -41,9 +47,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/download_label"
+                android:text="↓ DOWNLOAD"
                 android:textColor="@color/accent_green"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
 
             <TextView
                 android:id="@+id/tvDownload"
@@ -51,15 +59,16 @@
                 android:layout_height="wrap_content"
                 android:text="0.0 MB/s"
                 android:textColor="@color/text_primary"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="12dp" />
         </LinearLayout>
 
         <View
             android:layout_width="1dp"
-            android:layout_height="50dp"
-            android:background="@color/text_secondary" />
+            android:layout_height="60dp"
+            android:background="@color/text_secondary"
+            android:alpha="0.3" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -71,9 +80,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/upload_label"
+                android:text="↑ UPLOAD"
                 android:textColor="@color/accent_blue"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
 
             <TextView
                 android:id="@+id/tvUpload"
@@ -81,20 +92,19 @@
                 android:layout_height="wrap_content"
                 android:text="0.0 MB/s"
                 android:textColor="@color/text_primary"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="12dp" />
         </LinearLayout>
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add the widget to your home screen for quick access."
+        android:text="Tap anywhere to refresh speed"
         android:textColor="@color/text_secondary"
         android:textSize="12sp"
-        android:gravity="center"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="32dp" />
 
     <TextView
         android:layout_width="wrap_content"
