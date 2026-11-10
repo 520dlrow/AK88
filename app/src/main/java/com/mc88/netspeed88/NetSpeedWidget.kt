@@ -15,7 +15,7 @@ class NetSpeedWidget : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         for (appWidgetId in appWidgetIds) {
-            updateWidget(context, appWidgetManager, appWidgetId, true)
+            updateWidget(context, appWidgetManager, appWidgetId)
         }
         scheduleUpdate(context)
     }
@@ -28,14 +28,10 @@ class NetSpeedWidget : AppWidgetProvider() {
 
         if (intent.action == "com.mc88.netspeed88.UPDATE_WIDGET" || intent.action == Intent.ACTION_SCREEN_ON) {
             for (appWidgetId in allWidgetIds) {
-                updateWidget(context, appWidgetManager, appWidgetId, false)
+                updateWidget(context, appWidgetManager, appWidgetId)
             }
             if (intent.action == "com.mc88.netspeed88.UPDATE_WIDGET") {
                 scheduleUpdate(context)
-            }
-        } else if (intent.action == "com.mc88.netspeed88.CLICK_WIDGET") {
-            for (appWidgetId in allWidgetIds) {
-                updateWidget(context, appWidgetManager, appWidgetId, true)
             }
         }
     }
@@ -48,7 +44,7 @@ class NetSpeedWidget : AppWidgetProvider() {
         val pendingIntent = PendingIntent.getBroadcast(
             context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-        val triggerTime = SystemClock.elapsedRealtime() + 3000
+        val triggerTime = SystemClock.elapsedRealtime() + 2000
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME, triggerTime, pendingIntent)
     }
 
@@ -57,33 +53,23 @@ class NetSpeedWidget : AppWidgetProvider() {
         private var lastTx = 0L
         private var lastTime = 0L
 
-        private fun updateWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int, forceReset: Boolean) {
+        private fun updateWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
             val views = RemoteViews(context.packageName, R.layout.widget_layout)
-
-            val clickIntent = Intent(context, NetSpeedWidget::class.java).apply {
-                action = "com.mc88.netspeed88.CLICK_WIDGET"
-            }
-            val clickPendingIntent = PendingIntent.getBroadcast(
-                context, 1, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-            )
-            views.setOnClickPendingIntent(R.id.widgetDownload, clickPendingIntent)
-            views.setOnClickPendingIntent(R.id.widgetUpload, clickPendingIntent)
 
             val currentTime = System.currentTimeMillis()
             val currentRx = TrafficStats.getTotalRxBytes()
             val currentTx = TrafficStats.getTotalTxBytes()
 
-            if (lastTime == 0L || forceReset || (currentTime - lastTime) > 10000) {
+            if (lastTime == 0L) {
                 lastTime = currentTime
                 lastRx = currentRx
                 lastTx = currentTx
-                views.setTextViewText(R.id.widgetDownload, "0.0 MB/s")
-                views.setTextViewText(R.id.widgetUpload, "0.0 MB/s")
-                appWidgetManager.updateAppWidget(appWidgetId, views)
                 return
             }
 
             val timeDiff = currentTime - lastTime
+            if (timeDiff <= 500) return
+
             val rxSpeed = ((currentRx - lastRx) / timeDiff) * 1000
             val txSpeed = ((currentTx - lastTx) / timeDiff) * 1000
 
@@ -98,14 +84,14 @@ class NetSpeedWidget : AppWidgetProvider() {
         }
 
         private fun formatSpeed(bytesPerSecond: Long): String {
-            if (bytesPerSecond <= 0) return "0 B/s"
+            if (bytesPerSecond <= 0) return "0.0 B/s"
             val kb = bytesPerSecond / 1024.0
             val mb = kb / 1024.0
 
             return when {
                 mb >= 1.0 -> String.format(Locale.US, "%.1f MB/s", mb)
                 kb >= 1.0 -> String.format(Locale.US, "%.1f KB/s", kb)
-                else -> "$bytesPerSecond B/s"
+                else -> "${bytesPerSecond} B/s"
             }
         }
     }
